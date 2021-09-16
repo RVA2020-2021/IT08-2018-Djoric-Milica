@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Projekat } from 'src/app/models/projekat';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -21,8 +21,8 @@ export class ProjekatComponent implements OnInit, OnDestroy {
   dataSource: MatTableDataSource<Projekat>;
   subscription: Subscription;
 
-  //@ViewChild(MatSort, {static: false}) sort: MatSort;
-  //@ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   constructor(private projekatService: ProjekatService, private dialog: MatDialog) { }
 
@@ -38,8 +38,8 @@ export class ProjekatComponent implements OnInit, OnDestroy {
     this.subscription = this.projekatService.getAllProjekti().subscribe(
       data => {
         this.dataSource = new MatTableDataSource(data);
-        //this.dataSource.sort = this.sort;
-        //this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }
 
     ),

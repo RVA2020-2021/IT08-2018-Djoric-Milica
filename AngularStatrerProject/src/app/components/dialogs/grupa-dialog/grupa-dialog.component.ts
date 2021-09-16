@@ -33,7 +33,7 @@ export class GrupaDialogComponent implements OnInit {
   }
   public add(): void {
     this.grupaService.addGrupa(this.data).subscribe(() => {
-      this.snackBar.open('Smer uspešno dodat: ' + this.data.id, 'OK', {
+      this.snackBar.open('Grupa uspešno dodata: ' + this.data.id, 'OK', {
         duration: 2500
       });
     }),
